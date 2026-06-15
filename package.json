@@ -1,6 +1,6 @@
 {
   "name": "@e-a-s-t/lore-skill",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "AI agent skill for using Lore as git-native project memory.",
   "type": "module",
   "bin": {
