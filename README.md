@@ -14,13 +14,13 @@ Install the package globally first:
 npm install -g github:e-a-s-t/lore-skill
 ```
 
-Then install the Codex-side files into your global Codex home:
+Then register Lore with Codex using Codex's skills installer:
 
 ```bash
 lore-skill install
 ```
 
-This writes the shared instructions, slash-command files, and the global Codex skill metadata into `CODEX_HOME` if set, otherwise `~/.codex`.
+That uses `npx skills add github:e-a-s-t/lore-skill -a codex`, which is the same installer style Caveman uses for Codex.
 
 ## Project Setup
 

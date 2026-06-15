@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import fs from "node:fs";
-import os from "node:os";
 import path from "node:path";
+import { spawnSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -85,11 +85,10 @@ Version:
 Usage:
   lore-skill -V|--version
   lore-skill init [--all] [--codex] [--copilot] [--claude] [--agents]
-  lore-skill install [--global|--codex]
+  lore-skill install
   lore-skill doctor
 
 Examples:
-  lore-skill -V
   lore-skill install
   lore-skill init --all
   lore-skill init --codex --copilot
@@ -107,10 +106,6 @@ function writeFile(contents, dest) {
   fs.mkdirSync(path.dirname(dest), { recursive: true });
   fs.writeFileSync(dest, contents);
   console.log(`created ${path.relative(targetDir, dest)}`);
-}
-
-function codexHome() {
-  return process.env.CODEX_HOME ?? path.join(os.homedir(), ".codex");
 }
 
 function init() {
@@ -149,33 +144,23 @@ function init() {
 }
 
 function install() {
-  const flags = new Set(args.slice(1));
-  const home = codexHome();
-  const skillDir = path.join(home, "skills", "lore");
+  const result = spawnSync("npx", ["skills", "add", "github:e-a-s-t/lore-skill", "-a", "codex"], {
+    stdio: "inherit",
+  });
 
-  if (flags.has("--global") || flags.has("--codex") || flags.size === 0) {
-    copyFile(path.join(repoSkillDir, "SKILL.md"), path.join(skillDir, "SKILL.md"));
-    copyFile(
-      path.join(repoSkillDir, "agents/openai.yaml"),
-      path.join(skillDir, "agents/openai.yaml"),
-    );
-    writeFile(loreInstructions, path.join(home, "instructions.md"));
-    writeFile(loreCommand, path.join(home, "commands/lore.md"));
-    writeFile(
-      loreByeCommand,
-      path.join(home, "commands/lore-bye.md"),
-    );
-    return;
+  if (result.error) {
+    console.error(result.error.message);
+    process.exit(1);
   }
 
-  console.error("Nothing to install.");
-  process.exit(1);
+  process.exit(result.status ?? 0);
 }
 
 function doctor() {
   const checks = [
     ["Lore CLI", "lore --version"],
     ["Git", "git --version"],
+    ["Codex skills", "npx skills --help"],
   ];
   console.log("Doctor checks to run manually:");
   for (const [name, cmd] of checks) {
