@@ -9,7 +9,7 @@ This repository teaches AI coding agents how to use Lore before changing code.
 ## Install
 
 ```bash 
-npm install -g @e-a-s-t/lore-skill 
+npm install -g github:e-a-s-t/lore-skill
 ```
 
 Then initialize agent instructions inside a project:
