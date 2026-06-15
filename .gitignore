@@ -1,0 +1,25 @@
+# dependencies
+node_modules/
+
+# coverage
+coverage/
+
+# logs
+*.log
+npm-debug.log*
+
+# editor files
+.vscode/
+.idea/
+
+# macOS
+.DS_Store
+
+# temporary files
+*.tmp
+
+# test output
+test-output/
+
+# npm package
+*.tgz

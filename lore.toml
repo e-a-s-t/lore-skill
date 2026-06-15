@@ -1,0 +1,3 @@
+version = "0.1"
+project = "lore-skill"
+description = "AI agent skill distribution for Lore."

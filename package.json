@@ -1,0 +1,32 @@
+{
+  "name": "@e-a-s-t/lore-skill",
+  "version": "0.1.0",
+  "description": "AI agent skill for using Lore as git-native project memory.",
+  "type": "module",
+  "bin": {
+    "lore-skill": "bin/lore-skill.js"
+  },
+  "files": [
+    "bin/",
+    "templates/",
+    "README.md"
+  ],
+  "scripts": {
+    "test": "node --test",
+    "pack:check": "npm pack --dry-run"
+  },
+  "keywords": [
+    "lore",
+    "ai",
+    "agents",
+    "skills",
+    "claude",
+    "codex",
+    "copilot"
+  ],
+  "author": "Erik Åström",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  }
+}
