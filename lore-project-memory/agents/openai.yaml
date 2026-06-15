@@ -1,0 +1,3 @@
+display_name: Lore Project Memory
+short_description: Use Lore as the source of truth for this repository.
+default_prompt: Use Lore as the source of truth in this repository. Start on /lore, keep using Lore for context, decisions, and validation, and stop on /lore-bye. Search relevant context, inspect referenced FEATURE/REQ/STORY/ADR/TEST artifacts recursively, and validate changes with `lore validate`. Do not invent requirements, architecture decisions, or test expectations.

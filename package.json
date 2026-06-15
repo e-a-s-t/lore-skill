@@ -8,8 +8,8 @@
   },
   "files": [
     "bin/",
-    "templates/",
-    "README.md"
+    "README.md",
+    "lore-project-memory/"
   ],
   "scripts": {
     "test": "node --test",
