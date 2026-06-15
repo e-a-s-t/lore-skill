@@ -84,3 +84,7 @@ This repository contains its own .lore directory.
 Start here:
 
 bash lore show FEATURE-001 --recursive
+
+## License
+
+MIT
